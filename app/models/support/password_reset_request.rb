@@ -20,7 +20,7 @@
 #
 
 class Support::PasswordResetRequest < ActionRequest
-
+  include Commentable
   before_create :set_body
 
   private

@@ -36,4 +36,4 @@
           tr
             td = req.id
             td = req.created_at
-            td = link_to 'View', versions_path('Support::PasswordResetRequest', req.id)
+            td = link_to 'View', versions_path('Support::PasswordResetRequest', req.id, format: :pdf)
