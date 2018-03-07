@@ -1,0 +1,7 @@
+p Hello #{@ticket.user.name},
+p Your request for support has been received. You will receive additional updates via email.
+p The reference number for this request is <strong>#{@ticket.ticket_number}</strong>.
+p
+  em If you need to add more details to this ticket, please #{link_to "Click Here", support_ticket_url(@ticket)}
+p Best,
+p PincannaRx Support Bot

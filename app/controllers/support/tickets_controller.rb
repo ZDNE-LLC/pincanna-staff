@@ -12,6 +12,7 @@ class Support::TicketsController < ApplicationController
   def create
     @ticket = current_user.support_tickets.new(ticket_params)
     if @ticket.save
+      Support::TicketsMailer.ticket_created(@ticket.id).deliver_now
       redirect_to @ticket
     else
       render :new
