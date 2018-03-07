@@ -1,0 +1,23 @@
+.panel.panel-primary
+  .panel-heading
+    | Password Reset Request
+  .panel-body
+    - if current_user.password_resets.where(completed: false).any?
+      - pwd_req = current_user.password_resets.where(completed: false).first
+      table.table.table-sm
+        tr
+          th Request ID
+          td = pwd_req.id
+        tr
+          th Date requested
+          td = pwd_req.created_at
+        tr
+          th Status
+          td Pending
+
+        tr
+          th Request Info
+          td = pwd_req.body
+    - else
+      = simple_form_for @request, url: support_password_resets_path do |f|
+        = f.submit 'Request New Password', class: 'btn btn-info'

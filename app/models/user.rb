@@ -32,6 +32,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2]
   has_many :support_tickets, class_name: 'Support::Ticket'
+  has_many :password_resets, class_name: 'Support::PasswordResetRequest'
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
