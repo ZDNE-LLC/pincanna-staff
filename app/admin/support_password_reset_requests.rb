@@ -4,13 +4,9 @@ ActiveAdmin.register Support::PasswordResetRequest, as: 'Password Reset' do
 #
   permit_params :body, :completed
   menu parent: 'Support'
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+  member_action :complete_request, method: :put do
+    resource.update(completed: true)
+    redirect_to resource_path, notice: 'Password request completed.'
+  end
 
 end

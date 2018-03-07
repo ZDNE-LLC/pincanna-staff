@@ -23,6 +23,10 @@ class Support::PasswordResetRequest < ActionRequest
   include Commentable
   before_create :set_body
 
+  def complete_request(temp_password)
+    self.update(completed: true) && Support::PasswordResetsMailer.completed(self.id, temp_password).deliver_now
+  end
+
   private
   def set_body
     self.body = "Password reset requested for #{self.user.name} (#{self.user.email})."

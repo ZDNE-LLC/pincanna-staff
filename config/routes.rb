@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :manager do
+    resources :password_reset_completions, only: [:index] do
+      post 'process_completion', to: 'password_reset_completions#process_request', on: :collection
+    end
+  end
   namespace :versions do
     get 'changelog/:class_name/:id', to: 'changelogs#show'
   end

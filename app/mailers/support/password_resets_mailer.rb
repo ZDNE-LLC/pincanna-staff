@@ -14,4 +14,14 @@ class Support::PasswordResetsMailer < ApplicationMailer
          subject: "Password Reset Requested",
          cc: "#{@request.user.name} <#{@request.user.email}>"
   end
+
+  def completed(request_id, temp_password)
+    @request = Support::PasswordResetRequest.find(request_id)
+    @temp_password = temp_password
+
+    mail to: "#{@request.user.name} <#{@request.user.email}>",
+         from: "PincannaRx Support <staff-support@pincanna.org>",
+         subject: "Your new password",
+         cc: "System Administrator <#{Rails.application.credentials.admin_email}>"
+  end
 end

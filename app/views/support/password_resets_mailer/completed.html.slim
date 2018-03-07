@@ -1,0 +1,6 @@
+h1 Hello #{@request.user.name},
+p The password reset request you submitted has been processed.
+p Your new password is <b>#{@temp_password}</b>
+p You will be required to change this the next time you login.
+hr
+p Request ID: #{@request.id}
