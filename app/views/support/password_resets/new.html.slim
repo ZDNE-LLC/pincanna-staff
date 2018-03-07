@@ -2,8 +2,8 @@
   .panel-heading
     | Password Reset Request
   .panel-body
-    p.text-center <strong>** You have a current reset request that has not yet been completed **</strong>
     - if current_user.password_resets.where(completed: false).any?
+      p.text-center <strong>** You have a current reset request that has not yet been completed **</strong>
       - pwd_req = current_user.password_resets.where(completed: false).first.decorate
       table.table.table-sm
         tr
