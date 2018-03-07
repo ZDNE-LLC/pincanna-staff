@@ -7,7 +7,7 @@ class Manager::PasswordResetCompletionsController < ApplicationController
   def process_request
     @request = Support::PasswordResetRequest.find params[:request][:request_id]
     if @request.update(completed: true)
-      Support::PasswordResetsMailer.completed(@request.id, params[:request][:temp_password]).deliver_now!
+      Support::PasswordResetsMailer.completed(@request.id, params[:request][:temp_password]).deliver_later!
       redirect_to manager_password_reset_completions_url, notice: 'Completed.'
     end
   end

@@ -24,7 +24,7 @@ class Support::PasswordResetRequest < ActionRequest
   before_create :set_body
 
   def complete_request(temp_password)
-    self.update(completed: true) && Support::PasswordResetsMailer.completed(self.id, temp_password).deliver_now
+    self.update(completed: true) && Support::PasswordResetsMailer.completed(self.id, temp_password).deliver_later
   end
 
   private

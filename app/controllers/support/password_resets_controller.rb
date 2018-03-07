@@ -7,7 +7,7 @@ class Support::PasswordResetsController < ApplicationController
   def create
     @request = Support::PasswordResetRequest.new(user: current_user)
     if @request.save
-      Support::PasswordResetsMailer.new_request(@request.id).deliver_now!
+      Support::PasswordResetsMailer.new_request(@request.id).deliver_later!
       redirect_to new_support_password_reset_path, notice: 'Password reset requested.'
     else
       render :new
