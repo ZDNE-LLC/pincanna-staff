@@ -2,6 +2,7 @@
   .panel-heading
     | Password Reset Request
   .panel-body
+    p.text-center <strong>** You have a current reset request that has not yet been completed **</strong>
     - if current_user.password_resets.where(completed: false).any?
       - pwd_req = current_user.password_resets.where(completed: false).first.decorate
       table.table.table-sm
@@ -21,3 +22,16 @@
     - else
       = simple_form_for @request, url: support_password_resets_path do |f|
         = f.submit 'Request New Password', class: 'btn btn-info'
+- if @previous_requests.any?
+  .panel.panel-default
+    .panel-heading Previously Completed Requests
+    table.table.table-sm.table-striped
+      thead
+        tr
+          th ID
+          th Date of Request
+      tbody
+        - @previous_requests.each do |req|
+          tr
+            td = req.id
+            td = req.created_at

@@ -1,6 +1,7 @@
 class Support::PasswordResetsController < ApplicationController
   def new
     @request = Support::PasswordResetRequest.new
+    @previous_requests = current_user.password_resets.where(completed: true).decorate
   end
 
   def create

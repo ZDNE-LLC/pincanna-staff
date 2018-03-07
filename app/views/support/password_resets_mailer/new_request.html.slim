@@ -1,13 +1,13 @@
 p Hello System Administrator,
-p A password reset requested has been received. Please process this request as soon as possible.
+p A password reset request has been received. Please process this request as soon as possible.
 hr
 table
   tr
     th Request ID
     td = @request.id
   tr
-    th Requested date
+    th Request date
     td = @request.created_at
   tr
     th Requested by
-    td #{@request.user.name} <#{@request.user.email}>
+    td #{@request.user.name} [#{@request.user.email}]
