@@ -23,6 +23,7 @@
 #
 
 class Support::Ticket < ApplicationRecord
+  include Commentable
   belongs_to :user
   enum urgency: [:normal, :urgent, :critical]
   enum status: [:submitted, :in_progress, :completed, :canceled]
