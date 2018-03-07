@@ -3,7 +3,7 @@
     | Password Reset Request
   .panel-body
     - if current_user.password_resets.where(completed: false).any?
-      - pwd_req = current_user.password_resets.where(completed: false).first
+      - pwd_req = current_user.password_resets.where(completed: false).first.decorate
       table.table.table-sm
         tr
           th Request ID
