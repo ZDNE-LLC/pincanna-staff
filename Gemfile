@@ -65,3 +65,4 @@ gem 'activeadmin'
 gem 'randexp'
 gem 'rails_db'
 gem "draper"
+gem "paper_trail"

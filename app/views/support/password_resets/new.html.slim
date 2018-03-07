@@ -30,8 +30,10 @@
         tr
           th ID
           th Date of Request
+          th Audit Log
       tbody
         - @previous_requests.each do |req|
           tr
             td = req.id
             td = req.created_at
+            td = link_to 'View', versions_path('Support::PasswordResetRequest', req.id)

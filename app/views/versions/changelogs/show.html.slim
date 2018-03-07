@@ -1,0 +1,18 @@
+h1 Changelog
+.panel.panel-primary
+  .panel-heading #{@object.class.name.titleize} Changes
+  table.table
+    thead
+      tr
+        th Timestamp
+        th Event
+        th Changes
+    tbody
+      - @versions.each do |version|
+        tr
+          td = version.created_at
+          td = version.event.titleize
+          td
+            - version.changeset.each do |attr, changes|
+              ul
+                li <strong>#{attr}</strong> changed from "<u>#{changes[0]}</u>" to "<u>#{changes[1]}</u>"

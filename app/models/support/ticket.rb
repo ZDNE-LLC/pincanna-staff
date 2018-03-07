@@ -30,6 +30,8 @@ class Support::Ticket < ApplicationRecord
 
   before_create :set_ticket_number
 
+  has_paper_trail
+
   private
 
   def set_ticket_number

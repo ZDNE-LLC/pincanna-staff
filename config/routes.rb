@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :versions do
+    get 'changelog/:class_name/:id', to: 'changelogs#show'
+  end
   namespace :support do
     resources :tickets, only: [:index, :new, :create, :show] do
       patch :cancel, on: :member, to: 'tickets#cancel'
