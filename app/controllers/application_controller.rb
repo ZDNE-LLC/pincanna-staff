@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   def new_session_path(scope)
     new_user_session_path
   end
+
+  def authenticate_admin_user!
+    if current_user
+      redirect_to root_path unless current_user.email == Rails.application.credentials.admin_email
+    else
+      redirect_to root_path
+    end
+  end
 end
