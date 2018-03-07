@@ -66,3 +66,5 @@ gem 'randexp'
 gem 'rails_db'
 gem "draper"
 gem "paper_trail"
+gem "prawn-rails"
+gem "prawn-table"
