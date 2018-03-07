@@ -1,4 +1,5 @@
 .panel.panel-success
   .panel-heading Tools
   ul.list-group
-    = link_to "Example tool", '#', class: 'list-group-item', target: '_blank'
+    = link_to "New Support Ticket", new_support_ticket_path, class: 'list-group-item'
+    = link_to "View Support Ticket Status", support_tickets_path, class: 'list-group-item'

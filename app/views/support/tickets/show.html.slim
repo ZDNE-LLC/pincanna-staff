@@ -1,0 +1,26 @@
+h1 Support Ticket Status
+hr
+.row
+  .col-md-8
+    .panel.panel-primary
+      .panel-heading Ticket Detail
+      table.table.table-sm.table-bordered
+        tr
+          th Status
+          td 
+            span.label.label-default = @ticket.status
+        tr
+          th Summary
+          td = @ticket.subject
+        tr
+          th Issue Detail
+          td = @ticket.body
+        tr
+          th Urgency
+          td 
+            span.label.label-default = @ticket.urgency
+  .col-md-4
+    .panel.panel-info
+      .panel-heading Actions
+      ul.list-group
+        = link_to 'Cancel Request', '#', class: 'list-group-item'

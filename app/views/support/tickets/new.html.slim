@@ -1,0 +1,6 @@
+h1 New Support Ticket
+= simple_form_for @ticket do |f|
+  = f.input :subject, label: 'Brief summary'
+  = f.input :urgency, collection: Support::Ticket.urgencies.keys
+  = f.input :body, label: 'Describe your issue in more detail. What has gone wrong? What do you need help with?'
+  = f.submit 'Create Ticket', class: 'btn btn-primary'

@@ -60,3 +60,5 @@ gem "devise"
 gem "pundit"
 gem "omniauth"
 gem "omniauth-google-oauth2"
+gem 'activeadmin'
+gem 'randgen'
