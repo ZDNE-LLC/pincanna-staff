@@ -1,0 +1,15 @@
+.row
+  .col-md-3
+    .panel.panel-primary
+      .panel-heading Notices
+      .panel-body None at this time.
+
+  .col-md-9
+    = render 'ticket_list', list_title: 'Current Support Tickets',
+      tickets: current_user.support_tickets.where(status: 'submitted').or(current_user.support_tickets.where(status: 'in_progress'))
+
+    = render 'ticket_list', list_title: 'Complete Support Tickets',
+      tickets: current_user.support_tickets.completed
+
+    = render 'ticket_list', list_title: 'Canceled Support Tickets',
+      tickets: current_user.support_tickets.canceled

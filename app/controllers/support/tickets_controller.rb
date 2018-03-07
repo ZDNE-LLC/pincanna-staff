@@ -1,5 +1,10 @@
 class Support::TicketsController < ApplicationController
   before_action :ensure_gsuite
+
+  def index
+    @tickets = current_user.support_tickets
+  end
+
   def new
     @ticket = current_user.support_tickets.new
   end

@@ -1,0 +1,15 @@
+.panel.panel-default
+  .panel-heading 
+    strong = list_title
+  table.table.table-sm.table-striped.table-hover
+    thead
+      tr
+        th.text-center
+        th Summary
+        th Status
+    tbody
+      - tickets.each do |ticket|
+        tr
+          td.text-center = link_to ticket.ticket_number, ticket, class: 'btn btn-primary'
+          td = ticket.subject
+          td = ticket.status
