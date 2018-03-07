@@ -1,6 +1,12 @@
 h1 PincannaRx Staff Portal
 hr
 - if user_signed_in?
-  p.lead Hello, #{current_user.name}!
+  .row
+    .col-md-3
+      p.lead Hello, #{current_user.name}!
+    .col-md-4
+      = render 'gsuite_nav'
+    .col-md-5
+      =render 'tools_nav'
 -else
   p.lead Please sign in.
