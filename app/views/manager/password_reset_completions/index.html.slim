@@ -10,7 +10,7 @@ table.table.table-bordered
       tr
         td = request.user.name
         td
-          = form_with scope: :request, url: process_completion_manager_password_reset_completions_path, class: 'form-inline' do |f|
+          = form_with scope: :request, url: process_completion_manager_password_reset_completions_path, local: true, class: 'form-inline' do |f|
             = f.hidden_field :request_id, value: request.id
             .form-group
               = f.label :temp_password
