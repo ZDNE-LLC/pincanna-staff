@@ -93,6 +93,8 @@ GEM
       selenium-webdriver
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
+    codemirror-rails (5.16.0)
+      railties (>= 3.0, < 6.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -249,6 +251,13 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_db (1.6.0)
+      codemirror-rails
+      kaminari
+      rails (>= 3.1.0)
+      ransack
+      simple_form
+      terminal-table
     railties (5.2.0.rc1)
       actionpack (= 5.2.0.rc1)
       activesupport (= 5.2.0.rc1)
@@ -343,6 +352,8 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     temple (0.8.0)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -391,6 +402,7 @@ DEPENDENCIES
   rack-canonical-host
   rack-timeout
   rails (~> 5.2.0.rc1)
+  rails_db
   randexp
   rspec-rails
   rspec_junit_formatter

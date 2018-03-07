@@ -63,3 +63,4 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem 'activeadmin'
 gem 'randexp'
+gem 'rails_db'
