@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :support do
-    resources :tickets, only: [:index, :new, :create, :show]
+    resources :tickets, only: [:index, :new, :create, :show] do
+      patch :cancel, on: :member, to: 'tickets#cancel'
+    end
   end
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

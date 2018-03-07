@@ -23,6 +23,15 @@ class Support::TicketsController < ApplicationController
     @ticket = Support::Ticket.find params[:id]
   end
 
+  def cancel
+    @ticket = Support::Ticket.find params[:id]
+    @status = @ticket.status
+    if @ticket.canceled!
+      Support::TicketsMailer.status_updated(@ticket.id, @status).deliver_now
+      redirect_to @ticket, notice: 'This ticket has been canceled.'
+    end
+  end
+
   private
 
   def ticket_params

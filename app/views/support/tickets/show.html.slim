@@ -27,4 +27,4 @@ hr
     .panel.panel-info
       .panel-heading Actions
       ul.list-group
-        = link_to 'Cancel Request', '#', class: 'list-group-item'
+        = link_to 'Cancel Request', cancel_support_ticket_path(@ticket), method: :patch, class: 'list-group-item'
