@@ -10,10 +10,12 @@
 #  id                     :uuid             not null, primary key
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
+#  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  sign_in_count          :integer          default(0), not null
+#  uid                    :string
 #  updated_at             :datetime         not null
 #
 # Indexes
@@ -25,7 +27,27 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable
+         :omniauthable, omniauth_providers: %i[google_oauth2]
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      #user.name = auth.info.name   # assuming the user model has a name
+      #user.image = auth.info.image # assuming the user model has an image
+      # If you are using confirmable and the provider(s) you use validate emails, 
+      # uncomment the line below to skip the confirmation emails.
+      # user.skip_confirmation!
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.gsuite_data"] && session["devise.gsuite_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
 end
